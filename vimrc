@@ -100,6 +100,7 @@ if &term == "xterm"
     set t_Co=256
 endif
 
+" colorscheme monokai
 colorscheme buddy
 " colorscheme desert
 " set background=dark
@@ -220,5 +221,11 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 set foldmethod=indent
 nnoremap <space> za
 vnoremap <space> zf
+
+" open file at position last closed at
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal! g'\"" | endif
+endif
 
 
