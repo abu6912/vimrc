@@ -30,18 +30,17 @@ set softtabstop=4                               " let backspace delete indent
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set colorcolumn=80
-let python_highlight_all=1                      "PYTHON
+let python_highlight_all=1                      " PYTHON
 syntax on
-
+" set mouse=a                                   " enable mouse usage
 set viewoptions=folds,options,cursor,unix,slash " better unix/windows compatibility
 set virtualedit=onemore                         " allow for cursor beyond last character
 set history=1000                                " Store a ton of history (default is 20)
-
 set showmode                                    " display the current mode
 
 set cursorline                                  " highlight current line
-hi cursorline guibg=\#333333                    " highlight bg color of current line
-hi CursorColumn guibg=\#333333                  " highlight cursor
+" hi cursorline guibg=\#333333                    " highlight bg color of current line
+" hi CursorColumn guibg=\#333333                  " highlight cursor
 
 if has('cmdline_info')
     set ruler                                   " show the ruler
@@ -49,7 +48,7 @@ if has('cmdline_info')
     set showcmd                                 " show partial commands in status line and
                                                 " selected characters/lines in visual mode
 endif
-                                                                 
+
 "show line numbers
 set number
 
@@ -57,7 +56,7 @@ set number
 set wildignore=*.o,*~,*.pyc
 
 "Always show current position
-set ruler
+" set ruler
 
 " Height of the command bar
 set cmdheight=2
@@ -79,11 +78,13 @@ set mat=2
 
 set backspace=indent,eol,start                  " backspace for dummys
 set linespace=0                                 " No extra spaces between rows
+set nofoldenable                                " don't fold code on open
 set list
 set listchars=tab:>.,trail:.,extends:\#,nbsp:.  " Highlight problematic whitespace
 
 " Remove trailing whitespaces and \^M chars
 autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\\\s\\\\+$","","")'))
+autocmd BufWritePre * :%s/\s\+$//e              " Remove trailing spaces
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -91,8 +92,17 @@ autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buff
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
-set background=dark
+if has('unix')
+    set t_Co=256
+endif
+
+if &term == "xterm"
+    set t_Co=256
+endif
+
+colorscheme buddy
+" colorscheme desert
+" set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -206,4 +216,9 @@ nnoremap <C-H> <C-W><C-H>
 
 "SuperTab will dropdown correctly
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+set foldmethod=indent
+nnoremap <space> za
+vnoremap <space> zf
+
 
