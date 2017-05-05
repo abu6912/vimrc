@@ -50,6 +50,7 @@ if has('cmdline_info')
 endif
 
 "show line numbers
+set relativenumber
 set number
 
 " Ignore compiled files
@@ -234,7 +235,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NerdCommenter
+" => Rainbow Paranthesis
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
