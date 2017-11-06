@@ -17,3 +17,5 @@ git clone https://github.com/tpope/vim-fugitive.git vim-fugitive
 git clone https://github.com/airblade/vim-gitgutter.git vim-gitgutter
 
 git clone https://github.com/jeffkreeftmeijer/vim-numbertoggle.git vim-numbertoggle
+
+git clone https://github.com/scrooloose/nerdcommenter.git nerdcommenter
