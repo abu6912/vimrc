@@ -274,6 +274,9 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 set splitbelow                                      "sp below
 set splitright                                      "vs below
 
+" Hit F12 to replace all tabs with 4 whitespaces
+map <F12> :%s/\t/    /g<CR>
+
 " Remap commands to move between split screens
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
